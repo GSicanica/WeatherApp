@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="bindDay"
+            type="com.example.weatherapp.ui.search.BindForecastDay" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="20dp"
+        app:cardCornerRadius="16dp"
+        android:padding="5dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:alpha="0.3"
+                android:background="@drawable/sun"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_speed_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="2dp"
+                tools:text="value"
+                android:text="@{bindDay.forecastModel.speed}"
+                app:layout_constraintStart_toEndOf="@+id/iv_weather"
+                app:layout_constraintTop_toBottomOf="@+id/tv_speed" />
+
+            <TextView
+                android:id="@+id/tv_hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="8dp"
+                android:text="Hour"
+                app:layout_constraintEnd_toEndOf="@+id/imageView2"
+                app:layout_constraintStart_toEndOf="@+id/tv_speed"
+                app:layout_constraintTop_toBottomOf="@+id/tv_humidity_value" />
+
+            <TextView
+                android:id="@+id/tv_hour_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="2dp"
+                tools:text="value"
+                android:text="@{bindDay.hour}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_speed_value"
+                app:layout_constraintTop_toBottomOf="@+id/tv_hour" />
+
+            <TextView
+                android:id="@+id/tv_speed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Speed"
+                app:layout_constraintStart_toEndOf="@+id/iv_weather"
+                app:layout_constraintTop_toBottomOf="@+id/tv_pressure_value" />
+
+            <TextView
+                android:id="@+id/tv_pressure_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                tools:text="value"
+                android:text="@{bindDay.forecastModel.pressure}"
+                app:layout_constraintStart_toEndOf="@+id/iv_weather"
+                app:layout_constraintTop_toBottomOf="@+id/tv_pressure" />
+
+            <TextView
+                android:id="@+id/tv_humidity_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                tools:text="value"
+                android:text="@{bindDay.forecastModel.humidity}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_pressure_value"
+                app:layout_constraintTop_toBottomOf="@+id/tv_humidity" />
+
+            <TextView
+                android:id="@+id/tv_humidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="4dp"
+                android:text="Humidity"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_pressure"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_day"
+                style="@style/CustomStyle.Text.Primary"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:letterSpacing="0.08"
+                tools:text="Monday"
+                android:text="@{bindDay.dayInWeek}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_weather"
+                style="@style/CustomStyle.ImageView"
+                android:layout_width="78dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                app:layout_constraintStart_toEndOf="@+id/textView7"
+                app:layout_constraintTop_toTopOf="parent"
+                app:loadImage="@{bindDay.imageUrlForecast}"
+                tools:src="@drawable/rain" />
+
+            <TextView
+                android:id="@+id/tv_min_temp_text"
+                style="@style/CustomStyle.Text.Primary"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="min"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_day" />
+
+            <TextView
+                android:id="@+id/tv_min_value"
+                style="@style/CustomStyle.Text.Primary"
+                android:layout_marginStart="8dp"
+                android:text="@{bindDay.forecastModel.tempMin}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_min_temp_text"
+                tools:text="minValue" />
+
+            <TextView
+                android:id="@+id/textView6"
+                style="@style/CustomStyle.Text.Primary"
+                android:text="°"
+                app:layout_constraintStart_toEndOf="@+id/tv_min_value"
+                app:layout_constraintTop_toBottomOf="@+id/tv_min_temp_text" />
+
+
+            <TextView
+                android:id="@+id/tv_max_text"
+                style="@style/CustomStyle.Text.Primary"
+                android:layout_marginStart="24dp"
+                android:text="max"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tv_min_temp_text"
+                app:layout_constraintStart_toEndOf="@+id/tv_min_temp_text" />
+
+            <TextView
+                android:id="@+id/tv_max_value"
+                style="@style/CustomStyle.Text.Primary"
+                android:layout_marginStart="8dp"
+                android:text="@{bindDay.forecastModel.tempMax}"
+                app:layout_constraintStart_toEndOf="@+id/textView6"
+                app:layout_constraintTop_toBottomOf="@+id/tv_max_text"
+                tools:text="maxValue" />
+
+            <TextView
+                android:id="@+id/textView7"
+                style="@style/CustomStyle.Text.Primary"
+                android:text="°"
+                app:layout_constraintStart_toEndOf="@+id/tv_max_value"
+                app:layout_constraintTop_toBottomOf="@+id/tv_min_temp_text" />
+
+            <TextView
+                android:id="@+id/tv_pressure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="Pressure"
+                app:layout_constraintStart_toEndOf="@+id/iv_weather"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
